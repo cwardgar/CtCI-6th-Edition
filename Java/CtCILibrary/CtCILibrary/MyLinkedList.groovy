@@ -1,7 +1,7 @@
 package CtCILibrary
 
 /**
- * Trivial
+ * Trivial 2.
  *
  * @author cwardgar
  * @since 2017-10-03
