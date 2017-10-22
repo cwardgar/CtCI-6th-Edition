@@ -2,6 +2,7 @@ package CtCILibrary;
 
 import java.util.*;
 import java.awt.*;
+import java.util.List;
 
 public class AssortedMethods {
 	public static int randomInt(int n) {
@@ -593,5 +594,12 @@ public class AssortedMethods {
 				"military", "boundary", "location", "homes", "boil",
 				"officials", "operator", "Senate", "lend", "hearts", "embers", "abused", "resins", "trendy", "ssdsy" };
 		return wordList;
+	}
+
+	public static int[] toIntArray(List<Integer> list){
+		int[] ret = new int[list.size()];
+		for(int i = 0;i < ret.length;i++)
+			ret[i] = list.get(i);
+		return ret;
 	}
 }

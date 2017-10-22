@@ -1,64 +1,71 @@
 package CtCILibrary
 
 /**
- * 
+ *
  *
  * @author cwardgar
  * @since 2017-10-03
  */
-class MyLinkedList {
-    Node head
-    Node tail
+class MyLinkedList<E> {
+    Node<E> head
+    Node<E> tail
     
     MyLinkedList() {}
     
-    MyLinkedList(List<Integer> vals) {
+    MyLinkedList(List<E> vals) {
         appendNodes vals
     }
     
-    void appendNode(int val) {
+    Node<E> appendNode(E val) {
         if (!head) {
-            head = new Node(value: val)
+            head = new Node<>(value: val)
             tail = head
         } else {
-            tail.next = new Node(value: val)
+            tail.next = new Node<>(value: val)
             tail = tail.next
         }
+        tail
     }
     
-    void appendNodes(List<Integer> vals) {
+    void appendNodes(List<E> vals) {
         for (int val : vals) {
             appendNode(val)
         }
     }
     
-    void prependNode(int val) {
+    Node<E> prependNode(E val) {
         if (!tail) {
-            head = new Node(value: val)
+            head = new Node<>(value: val)
             tail = head
         } else {
-            Node node = new Node(value: val, next: head)
+            Node<E> node = new Node<>(value: val, next: head)
             head = node
         }
+        head
     }
     
     @Override
     String toString() {
         StringBuilder sb = new StringBuilder()
-        for (Node node = head; node; node = node.next) {
-            sb << node.value << ' '
+        for (Node<E> node = head; node; node = node.next) {
+            sb << node << ' '
         }
         sb.toString()
     }
     
-    static class Node {
-        int  value
-        Node next
+    static class Node<E> {
+        E value
+        Node<E> next
+        
+        @Override
+        String toString() {
+            value.toString()
+        }
     }
     
     static void main(String[] args) {
         MyLinkedList ll = new MyLinkedList()
-        [1,2,3,4].each {
+        ['A', 'B', 'C', 'D'].each {
             ll.prependNode(it)
         }
         println ll
